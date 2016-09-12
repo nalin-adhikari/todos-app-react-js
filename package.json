@@ -1,0 +1,25 @@
+{
+  "name": "todos-app-react-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nalin-adhikari/todos-app-react-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nalin-adhikari/todos-app-react-js/issues"
+  },
+  "homepage": "https://github.com/nalin-adhikari/todos-app-react-js#readme",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
