@@ -1,6 +1,7 @@
 import React from 'react';
 
 class App extends React.Component {
+
    render() {
       return (
          <div>
@@ -35,7 +36,7 @@ class TodoForm extends React.Component{
             <div className="col-lg-10">
               <input type="text" className="form-control" id="inputEmail" placeholder="Todo task ..." />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Insert</button>
           </div>
          );
    }
