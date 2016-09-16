@@ -5,7 +5,14 @@ class App extends React.Component {
       return (
          <div>
             <Greeting />
-            <TodoForm />
+            <div className="row">
+               <div className="col-md-2"></div>
+               <div className="col-md-8">
+                  <TodoForm />
+                  <TodoList />
+               </div>
+               <div className="col-md-2"></div>
+            </div>
          </div>
       );
    }
@@ -14,12 +21,8 @@ class App extends React.Component {
 class Greeting extends React.Component{
    render(){
       return (
-            <div className = "row greeting">
-               <div className = "col-md-4"></div>
-               <div className = "col-md-4 textCenter">
-                  <h3 className = "alert alert-success" >A React Todos App</h3>
-               </div>
-               <div className = "col-md-4"></div>
+            <div className = "greeting textCenter">
+               <h3 className = "alert alert-success" >A React Todos App</h3>
             </div>
          );
    }
@@ -28,20 +31,28 @@ class Greeting extends React.Component{
 class TodoForm extends React.Component{
    render(){
       return (
-            <div className="row">
-               <div className="col-md-2"></div>
-               <div className="col-md-8">
-                  <form className="form-horizontal">
-                   <div className="form-group">
-                     <div className="col-lg-10">
-                       <input type="text" className="form-control" id="inputEmail" placeholder="Todo task ..." />
-                     </div>
-                   </div>
-                     <button type="submit" className="btn btn-primary">Submit</button>
-                  </form>
-               </div>
-               <div className="col-md-2"></div>
+          <div className="form-group">
+            <div className="col-lg-10">
+              <input type="text" className="form-control" id="inputEmail" placeholder="Todo task ..." />
             </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+         );
+   }
+}
+
+class TodoList extends React.Component{
+   render(){
+      return (
+            <div className="form-group">
+               <div className="col-lg-10">
+                 <div className="checkbox">
+                   <label>
+                     <input type="checkbox" /> My first Todo task.
+                   </label>
+                 </div>
+               </div>
+             </div>
          );
    }
 }
