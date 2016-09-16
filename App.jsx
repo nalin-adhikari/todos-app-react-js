@@ -2,6 +2,16 @@ import React from 'react';
 
 class App extends React.Component {
 
+  getInitialState(){
+    var todos = [];
+    if(localStorage.todos){
+      todos = JSON.parse(localStorage.todos);
+    }
+    return{
+      todos: todos
+    };
+  }
+
    render() {
       return (
          <div>
@@ -30,13 +40,19 @@ class Greeting extends React.Component{
 }
 
 class TodoForm extends React.Component{
+
+   addTodos(){
+    var todo = document.getElementById("todoItem").value;
+    log.console(todo);
+   }
+
    render(){
       return (
           <div className="form-group">
             <div className="col-lg-10">
-              <input type="text" className="form-control" id="inputEmail" placeholder="Todo task ..." />
+              <input type="text" className="form-control" id="todoItem" placeholder="Todo task ..." />
             </div>
-            <button type="submit" className="btn btn-primary">Insert</button>
+            <button type="button" className="btn btn-primary" onClick="this.addTodos()">Insert</button>
           </div>
          );
    }
@@ -58,5 +74,7 @@ class TodoList extends React.Component{
          );
    }
 }
+
+var todos = localStorage.getItem('todos') || [];
 
 export default App;
