@@ -47,6 +47,7 @@ class TodoList extends React.Component{
             <div className="form-group">
                <div className="col-lg-10">
                  <div className="checkbox">
+                 <button type="button" className="close" data-dismiss="alert">&times;</button>
                    <label>
                      <input type="checkbox" /> My first Todo task.
                    </label>
