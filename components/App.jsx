@@ -2,31 +2,58 @@ import React from 'react';
 import TodoBanner from './todo/TodoBanner.jsx';
 import TodoList from './todo/TodoList.jsx';
 import AddTodo from './todo/AddTodo.jsx';
+import _ from 'lodash';
 
 class App extends React.Component {
    constructor() {
       super();
       this.state = {
-         todos: []
+         todos: [
+         {
+            title: 'Welcome',
+            completed: false,
+            id: 123456
+         }
+         ]
       };
    }
 
-   updateItem(item) {
+   createTodo(item) {
       var todo = {title: item, completed: false, id: new Date().getTime()};
       this.setState({todos: this.state.todos.concat(todo)});
    }
 
-   changeStatus() {
-      // Here we need to change the status of the item when clicked on the Checkbox
+   toggleStatus(id) {
+      const foundTodo = _.find(this.state.todos, todo => todo.id === id);
+      foundTodo.completed = !foundTodo.completed;
+
+      this.setState({todos: this.state.todos});
+   }
+
+   saveTodo(oldId, newTitle) {
+      const foundTodo = _.find(this.state.todos, todo => todo.id === oldId)
+
+      foundTodo.title = newTitle;
+      this.setState({ todos: this.state.todos });
+   }
+
+   deleteTodo(todoId) {
+      _.remove(this.state.todos, todo => todo.id === todoId);
+      this.setState({ todos: this.state.todos });
    }
 
    render() {
       return (
          <div className="container col-sm-6 col-sm-offset-3">
             <TodoBanner title="TODO" />
-            <AddTodo updateItem={this.updateItem.bind(this)} />
-            <TodoList allTodos={this.state.todos} />
-         </div>
+            <AddTodo todos={this.state.todos} createTodo={this.createTodo.bind(this)} />
+            <TodoList 
+               allTodos={this.state.todos} 
+               toggleStatus={this.toggleStatus.bind(this)}
+               saveTodo={this.saveTodo.bind(this)}
+               deleteTodo={this.deleteTodo.bind(this)}
+               />         
+            </div>
          );
    }
 }
