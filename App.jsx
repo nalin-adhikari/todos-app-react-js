@@ -4,11 +4,19 @@ class App extends React.Component {
 
   getInitialState(){
     var todos = [];
-    if(localStorage.todos){
+    var completed = [];
+    if(localStorage.todos && localStorage.completed){
       todos = JSON.parse(localStorage.todos);
+      completed = JSON.parse(localStorage.completed);
+    }else{
+      //Insert dummy todos
+      todos.push("todos one");
+      completed.push("true");
     }
+
     return{
-      todos: todos
+      todos: todos,
+      completed: completed
     };
   }
 
@@ -20,7 +28,7 @@ class App extends React.Component {
                <div className="col-md-2"></div>
                <div className="col-md-8">
                   <TodoForm />
-                  <TodoList />
+                  <TodoList todos={this.todos} states={this.completed} />
                </div>
                <div className="col-md-2"></div>
             </div>
@@ -42,8 +50,7 @@ class Greeting extends React.Component{
 class TodoForm extends React.Component{
 
    addTodos(){
-    var todo = document.getElementById("todoItem").value;
-    log.console(todo);
+    var todo = document.getElementById("todoItem");
    }
 
    render(){
@@ -52,7 +59,7 @@ class TodoForm extends React.Component{
             <div className="col-lg-10">
               <input type="text" className="form-control" id="todoItem" placeholder="Todo task ..." />
             </div>
-            <button type="button" className="btn btn-primary" onClick="this.addTodos()">Insert</button>
+            <button type="button" className="btn btn-primary" onClick={this.addTodos()} >Create</button>
           </div>
          );
    }
@@ -66,7 +73,7 @@ class TodoList extends React.Component{
                  <div className="checkbox">
                  <button type="button" className="close" data-dismiss="alert">&times;</button>
                    <label>
-                     <input type="checkbox" /> My first Todo task.
+                     <input type="checkbox" /> {this.todos}
                    </label>
                  </div>
                </div>
