@@ -5,3 +5,11 @@
 .marginTop120{
 	margin-top: 120px;
 }
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
