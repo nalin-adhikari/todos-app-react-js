@@ -49,11 +49,22 @@ class Greeting extends React.Component{
 
 class TodoForm extends React.Component{
 
+
+  constructor(props) {
+      super(props);
+    
+      this.state = {
+         todos: ["hi", "hello"]
+      };
+   }
+
   addTodos(){
     var todo = document.getElementById('todoItem').value;
-    //console.log(todo);
-    todos.push(todo);
-    console.log(todos);    
+    this.setState({ todos: this.state.todos.concat(todo)});
+
+    console.log(this.state.todos.toString());
+    //this.setState({todos: this.state.todos.concat("todo")}); 
+    // console.log(todos);
   }
 
    render(){
@@ -62,7 +73,7 @@ class TodoForm extends React.Component{
             <div className="col-lg-10">
               <input type="text" className="form-control" id="todoItem" placeholder="Todo task ..." />
             </div>
-            <button type="button" className="btn btn-primary" onClick={this.addTodos} >Insert</button>
+            <button type="button" className="btn btn-primary" onClick={this.addTodos.bind(this)} >Insert</button>
           </div>
          );
    }
