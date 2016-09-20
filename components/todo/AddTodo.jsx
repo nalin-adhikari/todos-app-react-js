@@ -28,12 +28,12 @@ class AddTodo extends React.Component {
         this.refs.todoInput.value = '';
     }
 
-    validateInput(todo) {
-        if (!todo) {
+    validateInput(title) {
+        if (!title) {
             return 'Please Enter a Todo.';
-        } /*else if (_.find(this.props.todos, todo => todo.title === todo)) {
+        } else if (_.find(this.props.todos, todo => todo.title === title)) {
             return 'Simialar Task already exists';
-        }*/ else {
+        } else {
             return null;
         }
     }
